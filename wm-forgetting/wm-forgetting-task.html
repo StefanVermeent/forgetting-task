@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Forgetting</title>
+    <script src="C:/Repositories/ygt-tasks/jspsych-6.3.1/jspsych.js"></script>
+    <script src="C:/Repositories/ygt-tasks/jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+    <link href="C:/Repositories/ygt-tasks/jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
+  </head>
+  <body></body>
+  <script>
+  
+  // create timeline
+    var timeline = [];
+  
+  //------------------------- Letter stimuli
+    var letter_a = "<span style='font-size: 50px; text-transform: uppercase;'>a</span>";
+    var letter_b = "<span style='font-size: 50px; text-transform: uppercase;'>b</span>";
+    var letter_c = "<span style='font-size: 50px; text-transform: uppercase;'>c</span>";
+    var letter_d = "<span style='font-size: 50px; text-transform: uppercase;'>d</span>";
+    var letter_e = "<span style='font-size: 50px; text-transform: uppercase;'>e</span>";
+    var letter_f = "<span style='font-size: 50px; text-transform: uppercase;'>f</span>";
+    var letter_g = "<span style='font-size: 50px; text-transform: uppercase;'>g</span>";
+    var letter_h = "<span style='font-size: 50px; text-transform: uppercase;'>h</span>";
+    var letter_i = "<span style='font-size: 50px; text-transform: uppercase;'>i</span>";
+    var letter_j = "<span style='font-size: 50px; text-transform: uppercase;'>j</span>";
+    var letter_k = "<span style='font-size: 50px; text-transform: uppercase;'>k</span>";
+    var letter_l = "<span style='font-size: 50px; text-transform: uppercase;'>l</span>";
+    var letter_m = "<span style='font-size: 50px; text-transform: uppercase;'>m</span>";
+    var letter_n = "<span style='font-size: 50px; text-transform: uppercase;'>n</span>";
+    var letter_o = "<span style='font-size: 50px; text-transform: uppercase;'>o</span>";
+    var letter_p = "<span style='font-size: 50px; text-transform: uppercase;'>p</span>";
+    var letter_q = "<span style='font-size: 50px; text-transform: uppercase;'>q</span>";
+    var letter_r = "<span style='font-size: 50px; text-transform: uppercase;'>r</span>";
+    var letter_s = "<span style='font-size: 50px; text-transform: uppercase;'>s</span>";
+    var letter_t = "<span style='font-size: 50px; text-transform: uppercase;'>t</span>";
+    var letter_u = "<span style='font-size: 50px; text-transform: uppercase;'>u</span>";
+    var letter_v = "<span style='font-size: 50px; text-transform: uppercase;'>v</span>";
+    var letter_w = "<span style='font-size: 50px; text-transform: uppercase;'>w</span>";
+    var letter_x = "<span style='font-size: 50px; text-transform: uppercase;'>x</span>";
+    var letter_y = "<span style='font-size: 50px; text-transform: uppercase;'>y</span>";
+    var letter_z = "<span style='font-size: 50px; text-transform: uppercase;'>z</span>";
+
+
+
+    // Set of all 26 letters
+    var full_stimulus_set = [letter_a,letter_b,letter_c,letter_d,letter_e,letter_f,letter_g,letter_h,letter_i,letter_j,letter_k,letter_l,letter_m       ,letter_n,letter_o,letter_p,letter_q,letter_r,letter_s,letter_t,letter_u,letter_v,letter_w,letter_x,letter_y,letter_z];
+
+    
+    // Six letters drawn for current trial. No repetitions allowed, and should not have been featured on previous 2 trials
+    // TODO: should be turned into a function to prevent repetitions later
+    var trial_stimuli = jsPsych.randomization.sampleWithoutReplacement(full_stimulus_set, 6);
+    
+    
+    var stimulus_presentation = {
+      type: 'html-keyboard-response',
+      trial_duration: 3000,
+      choices: -1,
+      stimulus: 
+      '<p class = topLeft><p>' + trial_stimuli[0] + '</p></p>' +
+      '<p class = topMiddle><p>' + trial_stimuli[1] + '</p></p>' +
+      '<p class = topRight><p>' + trial_stimuli[2] + '</p></p>' +
+      '<p class = bottomLeft><p>' + trial_stimuli[3] + '</p></p>' +
+      '<p class = bottomMiddle><p>' + trial_stimuli[4] + '</p></p>' +
+      '<p class = bottomRight><p>' + trial_stimuli[5] + '</p></p>'
+    };
+    timeline.push(stimulus_presentation)
+    
+    // Forgetting cue: 50% top row of letters, 50% bottom row of letters
+    var trial_cue = []
+    
+    
+    // Memory probe: 50% from memory set, 50% from forgetting set
+    var trial_probe = []
+  
+
+  
+
+  
+
+    /* start the experiment */
+    jsPsych.init({
+      timeline: timeline
+    });
+  </script>
+</html>
